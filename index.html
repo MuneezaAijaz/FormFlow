@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FormFlow – Complete your profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>FormFlow</h1>
+        <p>Complete your profile in a few simple steps.</p>
+      </div>
+    </header>
+
+    <section class="card" id="card">
+      <div id="formArea">
+        <nav class="stepper" id="stepper" aria-label="Form progress">
+          <div class="stepper-line"><span id="lineFill"></span></div>
+          <ol>
+            <li data-step="1"><span class="dot">1</span><span class="label">Personal</span></li>
+            <li data-step="2"><span class="dot">2</span><span class="label">Address</span></li>
+            <li data-step="3"><span class="dot">3</span><span class="label">Work</span></li>
+            <li data-step="4"><span class="dot">4</span><span class="label">Preferences</span></li>
+            <li data-step="5"><span class="dot">5</span><span class="label">Review</span></li>
+          </ol>
+        </nav>
+
+        <div class="progress-meta">
+          <strong id="stepText">Step 1 of 5</strong>
+          <span id="percentText">20%</span>
+          <span class="saved" id="saveStatus" role="status" aria-live="polite">Progress saved</span>
+        </div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20" id="bar"><span id="barFill"></span></div>
+
+        <form id="msf" novalidate autocomplete="on">
+          <!-- Step 1 -->
+          <section class="step" data-step="1" aria-labelledby="t1">
+            <h2 id="t1" tabindex="-1">Personal information</h2>
+            <p class="hint">Tell us who you are.</p>
+            <div class="field">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Ayesha Khan">
+              <p class="error" id="err-fullName"></p>
+            </div>
+            <div class="grid">
+              <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="ayesha@example.com">
+                <p class="error" id="err-email"></p>
+              </div>
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+92 300 1234567">
+                <p class="error" id="err-phone"></p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Step 2 -->
+          <section class="step" data-step="2" aria-labelledby="t2" hidden>
+            <h2 id="t2" tabindex="-1">Address</h2>
+            <p class="hint">Where can we reach you?</p>
+            <div class="grid">
+              <div class="field">
+                <label for="country">Country</label>
+                <select id="country" name="country" autocomplete="country-name">
+                  <option value="">Select country</option>
+                  <option>Pakistan</option><option>United States</option><option>United Kingdom</option>
+                  <option>Canada</option><option>Australia</option><option>Germany</option>
+                  <option>India</option><option>United Arab Emirates</option><option>Other</option>
+                </select>
+                <p class="error" id="err-country"></p>
+              </div>
+              <div class="field">
+                <label for="city">City</label>
+                <input id="city" name="city" type="text" autocomplete="address-level2" placeholder="Karachi">
+                <p class="error" id="err-city"></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="address">Street address</label>
+              <input id="address" name="address" type="text" autocomplete="street-address" placeholder="House 12, Street 4, Block B">
+              <p class="error" id="err-address"></p>
+            </div>
+            <div class="field short">
+              <label for="postalCode">Postal code</label>
+              <input id="postalCode" name="postalCode" type="text" autocomplete="postal-code" placeholder="75300">
+              <p class="error" id="err-postalCode"></p>
+            </div>
+          </section>
+
+          <!-- Step 3 -->
+          <section class="step" data-step="3" aria-labelledby="t3" hidden>
+            <h2 id="t3" tabindex="-1">Professional information</h2>
+            <p class="hint">A little about your work.</p>
+            <div class="grid">
+              <div class="field">
+                <label for="occupation">Occupation</label>
+                <input id="occupation" name="occupation" type="text" placeholder="Product designer">
+                <p class="error" id="err-occupation"></p>
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" autocomplete="organization" placeholder="Acme Inc.">
+                <p class="error" id="err-company"></p>
+              </div>
+            </div>
+            <div class="field short">
+              <label for="experience">Experience</label>
+              <select id="experience" name="experience">
+                <option value="">Select experience</option>
+                <option>Less than 1 year</option><option>1–3 years</option>
+                <option>3–5 years</option><option>5–10 years</option><option>10+ years</option>
+              </select>
+              <p class="error" id="err-experience"></p>
+            </div>
+            <fieldset class="field choice" data-group="workType">
+              <legend>Work type</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="workType" value="Full Time"><span>Full Time</span></label>
+                <label class="chip"><input type="radio" name="workType" value="Part Time"><span>Part Time</span></label>
+                <label class="chip"><input type="radio" name="workType" value="Freelance"><span>Freelance</span></label>
+                <label class="chip"><input type="radio" name="workType" value="Student"><span>Student</span></label>
+                <label class="chip"><input type="radio" name="workType" value="Other"><span>Other</span></label>
+              </div>
+              <p class="error" id="err-workType"></p>
+            </fieldset>
+          </section>
+
+          <!-- Step 4 -->
+          <section class="step" data-step="4" aria-labelledby="t4" hidden>
+            <h2 id="t4" tabindex="-1">Preferences</h2>
+            <p class="hint">Help us tailor what we send you.</p>
+            <fieldset class="field choice" data-group="contactMethod">
+              <legend>Preferred contact method</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="contactMethod" value="Email"><span>Email</span></label>
+                <label class="chip"><input type="radio" name="contactMethod" value="Phone"><span>Phone</span></label>
+                <label class="chip"><input type="radio" name="contactMethod" value="WhatsApp"><span>WhatsApp</span></label>
+              </div>
+              <p class="error" id="err-contactMethod"></p>
+            </fieldset>
+            <fieldset class="field choice" data-group="interests">
+              <legend>Interests <small>(choose at least one)</small></legend>
+              <div class="chips">
+                <label class="chip"><input type="checkbox" name="interests" value="Web Development"><span>Web Development</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="UI/UX"><span>UI/UX</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Digital Marketing"><span>Digital Marketing</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="AI"><span>AI</span></label>
+                <label class="chip"><input type="checkbox" name="interests" value="Business"><span>Business</span></label>
+              </div>
+              <p class="error" id="err-interests"></p>
+            </fieldset>
+            <div class="field">
+              <label for="bio">Tell us something about yourself <small>(optional)</small></label>
+              <textarea id="bio" name="bio" rows="4" maxlength="300" placeholder="What are you working on, or hoping to learn?"></textarea>
+              <p class="counter"><span id="bioCount">0</span>/300</p>
+            </div>
+          </section>
+
+          <!-- Step 5 -->
+          <section class="step" data-step="5" aria-labelledby="t5" hidden>
+            <h2 id="t5" tabindex="-1">Review &amp; submit</h2>
+            <p class="hint">Check everything looks right. Use Edit to change a section.</p>
+            <div id="summary" class="summary"></div>
+          </section>
+
+          <div class="nav">
+            <button type="button" class="btn ghost" id="prevBtn">Previous</button>
+            <button type="button" class="btn primary" id="nextBtn">Next</button>
+            <button type="submit" class="btn primary" id="submitBtn" hidden>Submit form</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="success" id="success" hidden>
+        <div class="check" aria-hidden="true">
+          <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 15-17"/></svg>
+        </div>
+        <h2 id="successTitle" tabindex="-1">You're all set!</h2>
+        <p class="hint">Your information has been successfully submitted.</p>
+        <div id="successSummary" class="summary"></div>
+        <button type="button" class="btn primary" id="restartBtn">Start again</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
